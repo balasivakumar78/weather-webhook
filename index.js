@@ -5,6 +5,11 @@ const app = express();
 
 app.use(bodyParser.json());
 
+// ✅ Health check route for Render
+app.get('/', (req, res) => {
+  res.send('OK');
+});
+
 app.post('/webhook', async (req, res) => {
   const city = req.body.queryResult.parameters.location;
   const apiKey = process.env.OPENWEATHER_API_KEY;
